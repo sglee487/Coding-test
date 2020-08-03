@@ -45,6 +45,8 @@ for test_case in range(1, T + 1):
                             x, y = Q.pop()
                             board[y][x] = 1
                         break
+                    if board[y][x] == 0 or board[y][x] == 3:
+                        break
                     x += dx[d]
                     y += dy[d]
                 Q.clear()
@@ -60,6 +62,8 @@ for test_case in range(1, T + 1):
                         while Q:
                             x, y = Q.pop()
                             board[y][x] = 2
+                        break
+                    if board[y][x] == 0 or board[y][x] == 3:
                         break
                     x += dx[d]
                     y += dy[d]
