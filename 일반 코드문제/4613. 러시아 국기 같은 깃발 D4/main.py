@@ -8,41 +8,37 @@ for test_case in range(1, T + 1):
     # ///////////////////////////////////////////////////////////////////////////////////
     N, M = map(int, input().split())
     board = [input() for _ in range(N)]
-    print(*board,sep='\n')
+    # print(*board,sep='\n')
 
     # WB = [1 if c == 'W' else 0 for s in board for c in s] # work
     # WB = [1 if c == 'W' else 0 for c in s for s in board] # not work
-    WB = [[1 if c == 'W' else 0 for c in s] for s in board]
-    BB = [[1 if c == 'B' else 0 for c in s] for s in board]
-    RB = [[1 if c == 'R' else 0 for c in s] for s in board]
+    WNB = [[0 if c == 'W' else 1 for c in s] for s in board]
+    BNB = [[0 if c == 'B' else 1 for c in s] for s in board]
+    RNB = [[0 if c == 'R' else 1 for c in s] for s in board]
 
-    wsl, bsl, rsl = 0, 0, 0
+    result = 2500
 
-    other_blocks = 0
+    for blue_start in range(1, N - 1):
+        for blue_size in range(1, N - blue_start):
+            # print("blue_start :", blue_start)
+            # print("blue_size :", blue_size)
 
-    max_avg = 0
-    # white
-    for i in range(wsl+1,N-1):
-        avg = sum([sum(col) for col in zip(*WB[wsl:i])]) / ((i - wsl) * M)
-        if avg > max_avg:
-            max_avg = avg
-            bsl = i
+            all_sum = 0
 
-    max_avg = 0
-    # blue
-    for i in range(bsl + 1, N):
-        avg = sum([sum(col) for col in zip(*BB[bsl:i])]) / ((i - bsl) * M)
-        if avg > max_avg:
-            max_avg = avg
-            rsl = i
+            for i in range(0,blue_start):
+                # print("i :", i)
+                all_sum += sum(WNB[i])
 
-    all_sum = sum([sum(col) for col in zip(*WB[wsl:bsl])]) \
-              + sum([sum(col) for col in zip(*BB[bsl:rsl])]) \
-              + sum([sum(col) for col in zip(*RB[rsl:N])])
+            for j in range(blue_start, blue_start + blue_size):
+                # print("j :", j)
+                all_sum += sum(BNB[j])
 
-    print(all_sum)
-    print(N*M - all_sum)
+            for k in range(blue_start + blue_size, N):
+                # print("k :", k)
+                all_sum += sum(RNB[k])
 
+            if result > all_sum:
+                result = all_sum
 
-    print("#{}".format(test_case))
+    print("#{}".format(test_case),result)
     # ///////////////////////////////////////////////////////////////////////////////////
