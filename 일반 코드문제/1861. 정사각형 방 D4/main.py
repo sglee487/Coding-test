@@ -43,7 +43,7 @@ for test_case in range(1, T + 1):
 
     min_room = N*N
     max_distance = 1
-
+    # 1,276 ms
     solve()
 
     print("#{}".format(test_case), min_room,max_distance)
