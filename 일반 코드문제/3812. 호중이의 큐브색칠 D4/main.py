@@ -32,7 +32,6 @@ for test_case in range(1, T + 1):
 
     colors = [gongtong] * N
 
-
     print(colors)
     print("#{}".format(test_case))
     # ///////////////////////////////////////////////////////////////////////////////////
