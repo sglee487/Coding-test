@@ -7,31 +7,44 @@ T = int(input())
 for test_case in range(1, T + 1):
     # ///////////////////////////////////////////////////////////////////////////////////
     X, Y, Z, A, B, C, N = map(int, input().split())
-    print(X, Y, Z, A, B, C, N)
+    # print(X, Y, Z, A, B, C, N)
 
     colors = [0] * N
-    garo = [0] * N
 
-    x_end, y_end, z_end = ((X-A) // N) * N + A, ((Y-B) // N) * N + B, ((Z-C) // N) * N + C
-    x_zero, y_zero, z_zero = A-((A // N) * N), B-((B // N) * N), C-((C // N) * N)
-    print(x_end,y_end,z_end)
-    print(x_zero,y_zero,z_zero)
-    axis = int()
-    gongtong = 0
-    if x_end - x_zero == 0 and x_end - x_zero == 0 and x_end - x_zero == 0:
-        axis = -1
-    elif x_end - x_zero != 0:
-        gongtong = (((x_end - x_zero) * (Y) * (Z)) // N)
-        axis = 0
-    elif y_end - y_zero != 0:
-        gongtong = (((X) * (y_end - y_zero) * (Z)) // N)
-        axis = 1
-    elif z_end - z_zero != 0:
-        gongtong = (((X) * (Y) * (z_end - z_zero)) // N)
-        axis = 2
+    x_end, y_end, z_end = (X-A) // N, (Y-B) // N, (Z-C) // N
+    x_end_re, y_end_re, z_end_re = (X-A) % N, (Y-B) % N, (Z-C) % N
+    x_zero, y_zero, z_zero = A // N, B // N, C // N
+    x_zero_re, y_zero_re, z_zero_re = A % N, B % N, C % N
 
-    colors = [gongtong] * N
+    x = [x_end + x_zero] * N
+    for i in range(0, x_end_re):
+        x[i] += 1
+    for i in range(1, x_zero_re+1):
+        x[i] += 1
 
-    print(colors)
-    print("#{}".format(test_case))
+    y = [y_end + y_zero] * N
+    for i in range(0, y_end_re):
+        y[i] += 1
+    for i in range(1, y_zero_re+1):
+        y[i] += 1
+
+    z = [z_end + z_zero] * N
+    for i in range(0, z_end_re):
+        z[i] += 1
+    for i in range(1, z_zero_re+1):
+        z[i] += 1
+
+    xy = [0] * N
+    for i in range(N):
+        for j in range(N):
+            xy[(i+j) % N] += x[i] * y[j]
+
+    xyz = [0] * N
+    for i in range(N):
+        for j in range(N):
+            xyz[(i+j) % N] += xy[i] * z[j]
+
+    # print(x,y,z,xy,xyz)
+
+    print("#{}".format(test_case),*xyz)
     # ///////////////////////////////////////////////////////////////////////////////////
