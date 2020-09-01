@@ -10,3 +10,9 @@ visited = [[0] * N for _ in range(N)]
 
 # 정렬 기준 방법
 room_numbers = sorted(room_numbers, key=lambda x: -x[1])
+
+# 행렬 뒤집기
+N, M = map(int, input().split())
+HR = [0 for _ in range(N)]
+for i, c in enumerate(zip(*H)):
+    HR[i] = list(c)
