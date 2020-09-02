@@ -1,4 +1,3 @@
-# 시간초과
 import sys
 
 sys.stdin = open("input2.txt", "r")
@@ -55,6 +54,7 @@ for test_case in range(1, T + 1):
             if not(is_safe(r,c)):
                 result = False
         if not(result): break
-
-    print("#{}".format(test_case), result)
+    result_string = "YES"
+    if not(result): result_string = "NO"
+    print("#{}".format(test_case), result_string)
     # ///////////////////////////////////////////////////////////////////////////////////
