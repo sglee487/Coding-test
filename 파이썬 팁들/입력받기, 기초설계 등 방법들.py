@@ -8,6 +8,11 @@ board = [input() for _ in range(N)]
 # 행렬 만들기
 visited = [[0] * N for _ in range(N)]
 ds = [[[9999999,9999999,9999999,9999999] for _ in range(N)] for _ in range(N)]
+graph = [[] * n for _ in range(n)]
+
+for A, B in path:
+    graph[A].append(B)
+    graph[B].append(A)
 
 # 정렬 기준 방법
 room_numbers = sorted(room_numbers, key=lambda x: -x[1])
