@@ -7,3 +7,10 @@ def is_prime2_1(n):
     for d in range(3, int(math.sqrt(n)+1),2):
         if n % d == 0: return False
     return True
+
+# 순열, 조합, 중복순열, 중복조합
+# https://juhee-maeng.tistory.com/91
+from itertools import permutations
+from itertools import combinations
+from itertools import product
+from itertools import combinations_with_replacement
