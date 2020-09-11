@@ -1,0 +1,10 @@
+8
+hi
+a*a
+aa*
+ab*c*
+ab*c
+ab*cba
+abc*
+abccba
+*cba
