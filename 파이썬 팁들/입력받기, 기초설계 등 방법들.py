@@ -51,3 +51,7 @@ for d in range(8):
         if (x,y) in block:
             break
     return (ans-8)
+
+# 딕셔너리, 큐
+from collections import deque
+from collections import defaultdict
