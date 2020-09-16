@@ -55,3 +55,22 @@ for d in range(8):
 # 딕셔너리, 큐
 from collections import deque
 from collections import defaultdict
+
+# 우선순위 큐(힙)
+# https://python.flowdas.com/library/heapq.html
+# https://medium.com/@yhmin84/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%ED%81%90-priority-queue-%EB%A5%BC-%EC%9C%84%ED%95%9C-heapq-%EB%AA%A8%EB%93%88-%EC%82%AC%EC%9A%A9%EB%B2%95-b33c4e0ef2b1
+import heapq
+
+def solution(scoville, K):
+    Q = scoville[:]
+    heapq.heapify(Q)
+    count = 0
+    while not(all(e >= K for e in Q)) and len(Q) > 1:
+        heapq.heappush(Q, heapq.heappop(Q) + 2 * heapq.heappop(Q))
+        count += 1
+    if len(Q) == 1 and Q[0] < K:
+        return -1
+    else:
+        return count
+
+print(solution([1, 2, 3, 9, 10, 12],7),2)
