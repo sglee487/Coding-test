@@ -50,3 +50,12 @@ def find(pattern, char):
             return len(pattern) - i - 1
     # 일치하는 글자가 없다면 패턴의 길이만큼 이동한다.
     return len(pattern)
+
+str1 = "this is string example....wow!!!";
+str2 = "is";
+
+print str1.rindex(str2)
+print str1.index(str2)
+
+[1,2,3,2].index(2) # => 1
+# 오른쪽부터 찾고 싶을땐 reverse로 바꿔서 쓰는 듯..
