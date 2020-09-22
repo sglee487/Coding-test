@@ -14,3 +14,13 @@ from itertools import permutations
 from itertools import combinations
 from itertools import product
 from itertools import combinations_with_replacement
+
+# 소수 확인
+def isPrimeNumber(number):
+    if number <= 1:
+        return False
+    else:
+        for i in range(2, number // 2 + 1):
+            if number % i == 0:
+                return False
+        return True
