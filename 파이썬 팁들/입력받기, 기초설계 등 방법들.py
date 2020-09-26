@@ -14,6 +14,14 @@ for A, B in path:
     graph[A].append(B)
     graph[B].append(A)
 
+# 리스트 리스트 만들기
+etl = [[] for _ in range(60000)]
+te = []
+for s,e in routes:
+    te.append((s,'in'))
+    te.append((e,'out'))
+    etl[s+30000].append(e)
+
 # 정렬 기준 방법
 room_numbers = sorted(room_numbers, key=lambda x: -x[1])
 
