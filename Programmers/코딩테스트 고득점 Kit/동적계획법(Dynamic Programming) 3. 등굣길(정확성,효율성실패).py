@@ -4,7 +4,7 @@ def solution(m, n, puddles):
         board[1][i] = 1
     for i in range(1,n+1):
         board[i][1] = 1
-
+    # 이렇게 위처럼 하면 [2,1] 처럼 1일때가 틀림.
     for r in range(2,n+1):
         for c in range(2,m+1):
             if [c,r] in puddles: continue
