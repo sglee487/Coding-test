@@ -1,6 +1,13 @@
 # 입력 사이에 공간이 있을때
 list(map(int,input().split()))
 
+# 입력이 너무 많을 때
+import sys
+T = int(sys.stdin.readline())
+for test_case in range(1, T + 1):
+    N, K = map(int, sys.stdin.readline().split())
+    board = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+
 # 입력 사이에 공간이 없을때
 list(input())
 board = [input() for _ in range(N)]
