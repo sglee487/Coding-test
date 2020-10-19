@@ -64,3 +64,13 @@ print(count_by_range(a,4,4)) # 2
 
 # 값이 [-1, 3] 범위에 있는 데이터 개수 출력
 print(count_by_range(a, -1, 3)) # 6
+
+
+# 단어 뒤집기
+print("abcde"[::-1])
+
+# 단어 교체
+print("abc???".replace('?','a'))
+print("abc???".replace('?','z'))
+res = count_by_range(['aabeef','abbdef','abcdef','abcdee','abcfzz','abdffe'],"abc???".replace('?','a'),"abc???".replace('?','z'))
+print(res)
