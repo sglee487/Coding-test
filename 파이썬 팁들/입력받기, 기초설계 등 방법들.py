@@ -3,6 +3,10 @@ list(map(int,input().split()))
 
 # 입력이 너무 많을 때
 import sys
+sys.stdin = open("최단경로-전보.txt", "r")
+input = sys.stdin.readline # 꼭 sys.stdin 밑에
+# 또는
+import sys
 T = int(sys.stdin.readline())
 for test_case in range(1, T + 1):
     N, K = map(int, sys.stdin.readline().split())
@@ -20,6 +24,14 @@ graph = [[] * n for _ in range(n)]
 for A, B in path:
     graph[A].append(B)
     graph[B].append(A)
+
+# 리스트 원소 거르기
+a = [1,2,3,4,5]
+print([i for i in a if i % 2 == 0 ])
+# print([i if i % 2 == 0 for i in a ]) X
+print([i for i in a if i % 2 == 0 or i % 3 == 0])
+print([i if i % 2 == 0 else 9 for i in a])
+# print([i for i in a if i % 2 == 0 else 9 ]) X
 
 # 리스트 리스트 만들기
 etl = [[] for _ in range(60000)]
