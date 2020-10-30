@@ -15,3 +15,6 @@ def solution(expression):
                 temp = temp[:idx-1] + [str(eval(''.join(temp[idx-1:idx+2])))] + temp[idx+2:]
         cand.append(abs(int(temp[0])))
     return max(cand)
+
+print(solution("100-200*300-500+20"),60420)
+print(solution("50*6-3*2"),300)
