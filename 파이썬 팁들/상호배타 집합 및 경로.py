@@ -52,7 +52,7 @@ def MST_KRUSKAL(G):
 
     # mst_cost = 0
 
-    while len(mst) < N:
+    while len(mst) < N-1:
     # while G:
         u, v, val = G.pop(0)
         if Find_Set(u) != Find_Set(v):
