@@ -1,6 +1,45 @@
 # 파이썬 SW문제해결 응용_최적화 - 01 문자열 탐색
 # 2차시 02 문자열 매칭
 
+# KMP 알고리즘
+A:str = input().strip()
+B:str = input().strip()
+nextp = [-1] * len(B)
+
+# p: 패턴, M: 패턴의 길이
+# nextp: 불일치가 발생하면 이동할 위치를 저장
+def KMP_Preprocess(p, nextp):
+    M = len(p)
+    i = 0; j = -1
+
+    while i<M:
+        nextp[i] = j
+        while j >= 0 and p[i] != p[j]:
+            j = nextp[j]
+
+        i += 1; j += 1
+
+KMP_Preprocess(B, nextp)
+
+# t: 텍스트, p: 패턴
+# N: 텍스트의 길이, M: 패턴의 길이
+# nextp: 불일치가 발생하면 이동할 위치를 저장
+def KMP_Search(t,p,nextp):
+    N = len(t); M = len(p)
+    i = 0; j = 0
+
+    while i < N:
+        while j >= 0 and t[i] != p[j]:
+            j = nextp[j]
+        i += 1; j += 1
+        if j == M:
+            return i-j
+    return -1
+
+print(1 if KMP_Search(A,B,nextp) != -1 else 0)
+
+
+
 # 보이어 무어 알고리즘
 # https://mungto.tistory.com/124
 # 문자열 검색하는 보이어 무어 알고리즘
@@ -59,3 +98,25 @@ print str1.index(str2)
 
 [1,2,3,2].index(2) # => 1
 # 오른쪽부터 찾고 싶을땐 reverse로 바꿔서 쓰는 듯..
+
+
+# 내가 만든거
+A:str = input().strip()
+B:str = input().strip()
+skipdict = {b:v for b, v in zip(B, range(len(B)-1,-1,-1))}
+
+def boyer_moore(A,B,skipdict):
+    i = len(B)-1
+    j = len(B)-1
+    while i < len(A):
+        if A[i] != B[j]:
+            i += (skipdict[A[i]] if A[i] in skipdict else len(B))
+            j = len(B)-1
+        else:
+            i -= 1
+            j -= 1
+            if j == -1:
+                return i + 1
+    return -1
+
+print(1 if boyer_moore(A,B,skipdict) != -1 else 0)
